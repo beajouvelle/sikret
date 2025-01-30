@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding: 50px;
+            background-color: #ffe6f2;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        #yes {
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+        #no {
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will You Be My Valentine? 💖</h1>
+    <div class="buttons">
+        <button id="yes" onclick="showDatePicker()">Yes</button>
+        <button id="no" onclick="makeYesBigger()">No</button>
+    </div>
+    
+    <div id="datePicker" class="hidden">
+        <h2>Are you free on February 14? 📅</h2>
+        <input type="date" id="dateInput" min="2025-02-14" max="2025-02-14">
+        <button onclick="showFinalMessage()">Confirm</button>
+    </div>
+    
+    <div id="finalMessage" class="hidden">
+        <h2>Thank you for being my Valentine! 💕</h2>
+        <img src="me and channie.jpg" alt="Us Together" width="300">
+    </div>
+    
+    <script>
+        let yesSize = 16;
+        let noTexts = ["Testingi bala sabat NO", "Di mo nako lab?", "Tumukon mo ang yes or gaan moko 10,000?", "Indi kagid ya mag tumok yes? Isa pagid bala", "Wala ka gid huya? Tumuka nana ang yes!", "Nano ka man? Yes na!", "Abi mo may katapusan ni?", "Plesss tumuka na ang YES! 💔", "Kung di ka mag tuslok yes, tuslukon ko buli mo", "HUHUHU YES NA PLS"];
+        let noIndex = 0;
+
+        function makeYesBigger() {
+            yesSize += 10;
+            document.getElementById("yes").style.fontSize = yesSize + "px";
+            document.getElementById("yes").style.padding = (yesSize / 3) + "px " + (yesSize / 2) + "px";
+            
+            if (noIndex < noTexts.length - 1) {
+                noIndex++;
+            }
+            document.getElementById("no").textContent = noTexts[noIndex];
+        }
+
+        function showDatePicker() {
+            document.querySelector(".buttons").classList.add("hidden");
+            document.getElementById("datePicker").classList.remove("hidden");
+        }
+
+        function showFinalMessage() {
+            document.getElementById("datePicker").classList.add("hidden");
+            document.getElementById("finalMessage").classList.remove("hidden");
+        }
+    </script>
+</body>
+</html>
